@@ -1,0 +1,15 @@
+# systemd service
+# Author: Blynxy
+# About: systemd service for keeping a encrypted ssh tunnel open for local mysql
+#        to a remote webserver
+# File Path: /etc/systemd/system/autossh-mysql-tun.service
+[Unit]
+Description=AutoSSH service for port 3306
+After=network.target
+
+[Service]
+Environment="AUTOSSH_GATETIME=0"
+ExecStart=/usr/bin/autossh -M 0 -NR 3306:localhost:3306 -o TCPKeepAlive=yes sqltunnel@192.168.122.20 -i /root/.ssh/id_rsa
+
+[Install]
+WantedBy=multi-user.target
