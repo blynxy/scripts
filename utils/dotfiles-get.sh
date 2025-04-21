@@ -10,5 +10,5 @@ fi
 GITHUB_USERNAME=$1
 git clone --bare git@github.com:$GITHUB_USERNAME/dotfiles.git $HOME/.dotfiles
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-dotfiles checkout
+dotfiles checkout --force
 dotfiles config --local status.showUntrackedFiles no
